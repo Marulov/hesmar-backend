@@ -1,6 +1,7 @@
 package com.hesmar.app.api;
 
 import com.hesmar.app.domain.User;
+import com.hesmar.app.dto.request.LoginRequest;
 import com.hesmar.app.service.UserService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.HttpStatus;
@@ -37,4 +38,10 @@ public class UserController {
     public ResponseEntity<List<User>> getAll() {
         return ResponseEntity.ok(userService.getAll());
     }
+
+    @GetMapping("/login")
+    public ResponseEntity<User> loginRequest(@RequestBody LoginRequest loginRequest) {
+        return ResponseEntity.ok(userService.loginRequest(loginRequest));
+    }
+
 }

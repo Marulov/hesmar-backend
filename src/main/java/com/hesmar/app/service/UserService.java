@@ -1,6 +1,7 @@
 package com.hesmar.app.service;
 
 import com.hesmar.app.domain.User;
+import com.hesmar.app.dto.request.LoginRequest;
 import com.hesmar.app.repository.UserRepository;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
@@ -41,5 +42,10 @@ public class UserService {
     public User getUserById(String id) {
         return userRepository.findById(id).orElseThrow(
                 () -> new RuntimeException("Cannot find User by id " + id));
+    }
+
+    public User loginRequest(LoginRequest loginRequest){
+        return userRepository.findByEmailAndPassword(loginRequest.getEmail(), loginRequest.getPassword()).orElseThrow(
+                () -> new RuntimeException("email or password is wrong"));
     }
 }
