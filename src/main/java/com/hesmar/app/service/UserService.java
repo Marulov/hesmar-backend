@@ -25,6 +25,7 @@ public class UserService {
         savedUser.setLastName(user.getLastName());
         savedUser.setEmail(user.getEmail());
         savedUser.setPassword(user.getPassword());
+        savedUser.setAddress(user.getAddress());
 
         userRepository.save(savedUser);
     }

@@ -69,4 +69,16 @@ public class ProductService {
         return productRepository.findProductByFavoriteTrue().orElseThrow(
                 () -> new RuntimeException("Cannot find favorite product by name "));
     }
+
+    public Product changeFavorite(String id){
+        Product savedProduct = productRepository.findById(id).orElseThrow(
+                () -> new RuntimeException("Cannot find product by id " + id)
+        );
+
+        savedProduct.setFavorite(!savedProduct.isFavorite());
+
+        productRepository.save(savedProduct);
+
+        return savedProduct;
+    }
 }

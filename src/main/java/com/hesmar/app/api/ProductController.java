@@ -67,4 +67,10 @@ public class ProductController {
     public ResponseEntity<List<Product>> getProductByFavorite() {
         return ResponseEntity.ok(productService.getProductByFavorite());
     }
+
+    @GetMapping("/changeFavorite/{id}")
+    public ResponseEntity<Product> changeFavorite(@PathVariable("id") String id) {
+        return ResponseEntity.ok(productService.changeFavorite(id));
+    }
+
 }
