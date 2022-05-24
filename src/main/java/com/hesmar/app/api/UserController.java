@@ -39,7 +39,7 @@ public class UserController {
         return ResponseEntity.ok(userService.getAll());
     }
 
-    @GetMapping("/login")
+    @PostMapping("/login")
     public ResponseEntity<User> loginRequest(@RequestBody LoginRequest loginRequest) {
         return ResponseEntity.ok(userService.loginRequest(loginRequest));
     }
