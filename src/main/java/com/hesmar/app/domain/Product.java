@@ -16,6 +16,7 @@ public class Product {
     private Barcode barcode;
     private List<Market> markets;
     private String name;
+    private String imageUrl;
     private int unitsInStock;
     private boolean favorite;
 

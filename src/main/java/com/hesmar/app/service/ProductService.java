@@ -28,6 +28,7 @@ public class ProductService {
         savedProduct.setName(product.getName());
         savedProduct.setUnitsInStock(product.getUnitsInStock());
         savedProduct.setFavorite(product.isFavorite());
+        savedProduct.setImageUrl(product.getImageUrl());
 
         productRepository.save(savedProduct);
     }
