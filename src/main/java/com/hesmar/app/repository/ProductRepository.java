@@ -15,6 +15,8 @@ public interface ProductRepository extends MongoRepository<Product, String> {
 
     Optional<List<Product>> findProductByName(String name);
 
+    Optional<List<Product>> findProductByNameLike(String name);
+
     Optional<List<Product>> findProductByFavoriteTrue();
 
 }

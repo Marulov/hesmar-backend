@@ -62,7 +62,7 @@ public class ProductService {
     }
 
     public List<Product> getProductByName(String name) {
-        return productRepository.findProductByName(name).orElseThrow(
+        return productRepository.findProductByNameLike(name).orElseThrow(
                 () -> new RuntimeException("Cannot find product by name " + name));
     }
 
