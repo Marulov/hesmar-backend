@@ -71,6 +71,11 @@ public class ProductService {
                 () -> new RuntimeException("Cannot find favorite product by name "));
     }
 
+    public Product getProductByBarcodeNumber(Long number) {
+        return productRepository.findProductByBarcodeNumber(number).orElseThrow(
+                () -> new RuntimeException("Cannot find product by barcode number "));
+    }
+
     public Product changeFavorite(String id){
         Product savedProduct = productRepository.findById(id).orElseThrow(
                 () -> new RuntimeException("Cannot find product by id " + id)

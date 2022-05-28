@@ -13,6 +13,8 @@ public interface ProductRepository extends MongoRepository<Product, String> {
 
     Optional<List<Product>> findProductByMarketsName(String name);
 
+    Optional<Product> findProductByBarcodeNumber(Long number);
+
     Optional<List<Product>> findProductByName(String name);
 
     Optional<List<Product>> findProductByNameLike(String name);

@@ -68,6 +68,11 @@ public class ProductController {
         return ResponseEntity.ok(productService.getProductByFavorite());
     }
 
+    @GetMapping("/getProductByBarcodeNumber/{number}")
+    public ResponseEntity<Product> getProductByBarcodeNumber(@PathVariable Long number) {
+        return ResponseEntity.ok(productService.getProductByBarcodeNumber(number));
+    }
+
     @GetMapping("/changeFavorite/{id}")
     public ResponseEntity<Product> changeFavorite(@PathVariable("id") String id) {
         return ResponseEntity.ok(productService.changeFavorite(id));

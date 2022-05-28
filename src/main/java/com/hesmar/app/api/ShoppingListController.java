@@ -17,9 +17,8 @@ public class ShoppingListController {
     private final ShoppingListService shoppingListService;
 
     @PostMapping()
-    public ResponseEntity<Void> add(@RequestBody ShoppingListCreatRequest shoppingListCreatRequest) {
-        shoppingListService.add(shoppingListCreatRequest);
-        return ResponseEntity.status(HttpStatus.CREATED).build();
+    public ResponseEntity<Double> add(@RequestBody ShoppingListCreatRequest shoppingListCreatRequest) {
+        return ResponseEntity.ok(shoppingListService.add(shoppingListCreatRequest));
     }
 
     @PutMapping()

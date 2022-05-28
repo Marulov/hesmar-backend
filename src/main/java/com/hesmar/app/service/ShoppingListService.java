@@ -1,5 +1,6 @@
 package com.hesmar.app.service;
 
+import com.hesmar.app.domain.Market;
 import com.hesmar.app.domain.Product;
 import com.hesmar.app.domain.ShoppingList;
 import com.hesmar.app.domain.User;
@@ -20,8 +21,9 @@ public class ShoppingListService {
     private final UserRepository userRepository;
     private final ProductRepository productRepository;
 
-    public void add(ShoppingListCreatRequest shoppingListCreatRequest) {
+    public Double add(ShoppingListCreatRequest shoppingListCreatRequest) {
         List<Product> products = new ArrayList<>();
+        double amount = 0.0;
 
         User user = userRepository.findById(shoppingListCreatRequest.getUserId()).orElseThrow(() ->
                 new RuntimeException("Cannot find user by id " + shoppingListCreatRequest.getUserId()));
@@ -29,6 +31,7 @@ public class ShoppingListService {
         for (String productId : shoppingListCreatRequest.getProductId()) {
             Product product = productRepository.findById(productId).orElseThrow(() ->
                     new RuntimeException("Cannot find product by id " + shoppingListCreatRequest.getProductId()));
+            amount = amount + product.getMarkets().stream().mapToDouble(Market::getUnitPrice).min().getAsDouble();
 
             products.add(product);
         }
@@ -36,8 +39,8 @@ public class ShoppingListService {
         ShoppingList saveShoppingList = new ShoppingList();
         saveShoppingList.setUser(user);
         saveShoppingList.setProducts(products);
-
         shoppingListRepository.save(saveShoppingList);
+        return amount;
     }
 
     public void update(ShoppingList shoppingList) {
