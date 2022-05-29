@@ -69,7 +69,7 @@ public class ProductController {
     }
 
     @GetMapping("/getProductByBarcodeNumber/{number}")
-    public ResponseEntity<Product> getProductByBarcodeNumber(@PathVariable Long number) {
+    public ResponseEntity<List<Product>> getProductByBarcodeNumber(@PathVariable Long number) {
         return ResponseEntity.ok(productService.getProductByBarcodeNumber(number));
     }
 
